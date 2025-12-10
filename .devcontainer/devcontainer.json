@@ -1,0 +1,27 @@
+{
+  "name": "Miryoku ZMK Development",
+  "dockerFile": "Dockerfile",
+  "runArgs": ["--security-opt", "label=disable"],
+  "workspaceFolder": "/workspaces/miryoku_zmk",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/miryoku_zmk,type=bind",
+  "containerEnv": {
+    "WORKSPACE_DIR": "${containerWorkspaceFolder}",
+    "PROMPT_COMMAND": "history -a"
+  },
+  "mounts": [
+    "type=volume,source=zmk-root-user,target=/root",
+    "type=volume,source=zmk-root,target=/workspaces/zmk",
+    "type=volume,source=zmk-zephyr,target=/workspaces/zephyr",
+    "type=volume,source=zmk-zephyr-modules,target=/workspaces/modules",
+    "type=volume,source=zmk-zephyr-tools,target=/workspaces/tools"
+  ],
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-vscode.cpptools"],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
