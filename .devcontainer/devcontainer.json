@@ -15,7 +15,6 @@
     "type=volume,source=zmk-zephyr-modules,target=/workspaces/modules",
     "type=volume,source=zmk-zephyr-tools,target=/workspaces/tools"
   ],
-  "postCreateCommand": "bash .devcontainer/setup.sh",
   "customizations": {
     "vscode": {
       "extensions": ["ms-vscode.cpptools"],
